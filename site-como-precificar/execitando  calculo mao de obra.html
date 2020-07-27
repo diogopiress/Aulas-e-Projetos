@@ -5,8 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculo de Mão de obra</title>
 </head>
+
+
 <body>
+    Digite o valor total de salarios dos funcionarios: <input type="number" name="salariofuncionario" id="salariofuncionario">
+    <br/>
+    Digite o valor total dos encargos sociais: <input type="number" name="emcargossociais" id="encargossociais">
+    <br/>
+    Digite a quantidade de funcionarios: <input type="number" name="totalfuncionarios" id="totalfuncionarios">
+    <br/>
+    Digite a carga horaria mensal (160 ou 220 horas): <input type="number" name="cargahoraria" id="cargahoraria">
+    <br/>
+    <input type="button" id="calcular" value="Calcular" onclick="calcular()">
+
+    <div id="res"></div>
+
+
     <script>
+        function calcular() {
+            var salariofunc = Number(window.document.querySelector('input#salariofuncionario'))
+            var encsociais = Number(window.document.querySelector('input#encargossociais'))
+            var quantfuncionarios = Number(window.document.querySelector('input#totalfuncionarios'))
+            var cargahora = Number(window.document.querySelector('input#cargahoraria'))
+            var res = window.document.querySelector('div#res')
+            var calc = (salariofunc + encsociais) / (quantfuncionarios * cargahora)      
+            res.innerHTML = `<p>Custo da Mão de obra : ${calc}</p>`
+            res.innerHTML += `valor dos encagaro ${encsociais}`
+        }
+        
+    </script>
+
+
+    <!-- <script>
         window.alert('Esta pagina calcula a mão de obra direta')
         var valorsalario = Number(window.prompt('Digite o total de salarios dos funcionarios: '))
         var encargossociais = Number(window.prompt('Digite os encargos sociais:'))
@@ -15,6 +45,6 @@
         var custohora = (valorsalario + encargossociais) / (numeroempregados * horas)
         document.write('Custo da Mão de obra Direta: ' + custohora.toFixed(2)) //monstrar so duas casas decimais no casso do resultato ser uma dizima
 
-    </script>
+    </script> -->
 </body>
 </html>
