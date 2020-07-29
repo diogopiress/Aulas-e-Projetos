@@ -4,17 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculo de Mão de obra</title>
+
+    <style>
+
+        input#calcular{
+            margin-top: 20px;
+            font-size: large;            
+        }
+        div#res{
+            margin-top: 20px;
+        }
+
+    </style>
+
 </head>
 
 
 <body>
-    Digite o valor total de salarios dos funcionarios: <input type="number" name="salariofuncionario" id="salariofuncionario">
+    Salarios dos funcionarios: <input type="number" name="salariofuncionario" id="salariofuncionario">
     <br/>
-    Digite o valor total dos encargos sociais: <input type="number" name="emcargossociais" id="encargossociais">
+    Encargos sociais: <input type="number" name="emcargossociais" id="encargossociais">
     <br/>
-    Digite a quantidade de funcionarios: <input type="number" name="totalfuncionarios" id="totalfuncionarios">
+    Quantidade de funcionarios: <input type="number" name="totalfuncionarios" id="totalfuncionarios">
     <br/>
-    Digite a carga horaria mensal (160 ou 220 horas): <input type="number" name="cargahoraria" id="cargahoraria">
+    Carga horaria mensal (160 ou 220 horas): <input type="number" name="cargahoraria" id="cargahoraria">
     <br/>
     <input type="button" id="calcular" value="Calcular" onclick="calcular()">
 
@@ -23,14 +36,20 @@
 
     <script>
         function calcular() {
-            var salariofunc = Number(window.document.querySelector('input#salariofuncionario'))
-            var encsociais = Number(window.document.querySelector('input#encargossociais'))
-            var quantfuncionarios = Number(window.document.querySelector('input#totalfuncionarios'))
-            var cargahora = Number(window.document.querySelector('input#cargahoraria'))
+            
+            var salariofunc = window.document.querySelector('input#salariofuncionario')//para fazer a ligação com o imput
+            var encsociais = window.document.querySelector('input#encargossociais')//para fazer a ligação com o imput
+            var quantfuncionarios = window.document.querySelector('input#totalfuncionarios')//para fazer a ligação com o imput
+            var cargahora = window.document.querySelector('input#cargahoraria')//para fazer a ligação com o imput
             var res = window.document.querySelector('div#res')
-            var calc = (salariofunc + encsociais) / (quantfuncionarios * cargahora)      
+            // abaixo criado as variaveis para convserção do imput, pois ele retorna o valor uma string
+            var sl = Number(salariofunc.value)
+            var es = Number(encsociais.value)
+            var qt = Number(quantfuncionarios.value)
+            var ch = Number(cargahora.value)
+            
+            var calc = (sl + es) / (qt * ch)      
             res.innerHTML = `<p>Custo da Mão de obra : ${calc}</p>`
-            res.innerHTML += `valor dos encagaro ${encsociais}`
         }
         
     </script>
